@@ -1,0 +1,14 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <h2>Добро пожаловать в систему учёта оценок</h2>
+
+    {% if user.is_authenticated %}
+        <p>Вы вошли как: <strong>{{ user.username }}</strong> (роль: {{ user.role|default:"не указана" }})</p>
+        <p><a href="{% url 'grades' %}">→ Посмотреть мои оценки и курсы</a></p>
+    {% else %}
+        <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a>, чтобы увидеть свои оценки.</p>
+    {% endif %}
+{% endblock %}

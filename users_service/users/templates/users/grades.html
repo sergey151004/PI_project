@@ -1,0 +1,46 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Мои оценки{% endblock %}
+
+{% block content %}
+    <h2>Мои оценки и доступные курсы</h2>
+
+    <h3>Доступные курсы</h3>
+    {% if courses %}
+        <ul>
+            {% for course in courses %}
+                <li><strong>{{ course.name }}</strong> — {{ course.description|truncatewords:15 }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Курсы пока недоступны или пусты.</p>
+    {% endif %}
+
+    <h3>Мои оценки</h3>
+    {% if grades %}
+        <table border="1" style="border-collapse: collapse; width: 100%;">
+            <thead>
+                <tr>
+                    <th>Курс ID</th>
+                    <th>Оценка</th>
+                    <th>Дата (если есть)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade in grades %}
+                    <tr>
+                        <td>{{ grade.course_id }}</td>
+                        <td><strong>{{ grade.grade }}</strong></td>
+                        <td>{{ grade.date|default:"—" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>У вас пока нет оценок.</p>
+    {% endif %}
+
+    <p style="margin-top: 20px;">
+        <a href="{% url 'index' %}">← На главную</a>
+    </p>
+{% endblock %}
