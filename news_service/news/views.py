@@ -1,9 +1,9 @@
-# news/views.py
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from django.shortcuts import render
+from .services.news_facade import NewsFacade
 
 
-class NewsListView(APIView):
-    """Временная заглушка — чтобы makemigrations прошёл"""
-    def get(self, request):
-        return Response({"message": "News service is alive"})
+def news_list(request):
+
+    news = NewsFacade.get_news()
+
+    return render(request, "news.html", {"news": news})
