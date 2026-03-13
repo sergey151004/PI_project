@@ -1,4 +1,4 @@
-# news/tests/test_config.py
+# news/test/test_config.py
 
 from django.test import TestCase
 
