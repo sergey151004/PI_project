@@ -309,7 +309,3 @@ class CourseList(generics.ListCreateAPIView):
 - Собрать импорты в начале `users/views.py` и удалить неиспользуемые.
 - Добавить краткие docstring к основным view и фасаду/фабрике в news_service.
 - Если в репозитории используется CORS в news_service — добавить `django-cors-headers` в `requirements.txt`.
-
----
-
-*Отчёт подготовлен по методологии Code Review: проверка реализации, логики, обработки ошибок, безопасности, зависимостей, тестирования и читаемости кода.*
